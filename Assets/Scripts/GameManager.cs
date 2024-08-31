@@ -2,22 +2,37 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject spherePrefab;
-    public GameObject cubePrefab;
-
     private void Start()
     {
         IMediator mediator = new Mediator();
 
-        GameObject sphereObject = Instantiate(spherePrefab);
-        Sphere sphere = sphereObject.GetComponent<Sphere>();
-        sphere.Setup(mediator, "Sphere");
+        // Find the Sphere and Cube objects in the scene
+        Sphere sphere = FindObjectOfType<Sphere>();
+        Cube cube = FindObjectOfType<Cube>();
 
-        GameObject cubeObject = Instantiate(cubePrefab);
-        Cube cube = cubeObject.GetComponent<Cube>();
-        cube.Setup(mediator);
+        if (sphere != null)
+        {
+            sphere.Setup(mediator, "Sphere");
+        }
+        else
+        {
+            Debug.LogError("Sphere object not found in the scene.");
+        }
 
-        sphere.SendCustomMessage("Hello, Cube!");
-        cube.SendCustomMessage("Hello, Sphere!");
+        if (cube != null)
+        {
+            cube.Setup(mediator);
+        }
+        else
+        {
+            Debug.LogError("Cube object not found in the scene.");
+        }
+
+        // Send messages between the Sphere and Cube
+        if (sphere != null && cube != null)
+        {
+            sphere.SendCustomMessage("Hello, Cube!");
+            cube.SendCustomMessage("Hello, Sphere!");
+        }
     }
 }
