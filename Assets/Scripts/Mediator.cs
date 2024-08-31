@@ -10,12 +10,12 @@ public class Mediator : IMediator
         {
             if(shape != sender)
             {
-                shape.ReceiveMessage(sender.Name, message);
+                shape.ReceiveCustomMessage(sender.Name, message);
             }
         }
     }
 
-    public void RegisterToy(Shape shape)
+    public void RegisterShape(Shape shape)
     {
         if(!shapes.Contains(shape))
         {

@@ -456,6 +456,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eb8d3163c5cdce4cbcb9686765b22d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spherePrefab: {fileID: 1837127695}
+  cubePrefab: {fileID: 907924667}
 --- !u!4 &1560823123
 Transform:
   m_ObjectHideFlags: 0

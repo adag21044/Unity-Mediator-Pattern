@@ -5,13 +5,13 @@ public abstract class Shape : MonoBehaviour
     protected IMediator mediator;
     public string Name { get; private set; }
 
-    protected Shape(IMediator mediator, string name)
+    public void Initialize(IMediator mediator, string name)
     {
         this.mediator = mediator;
         Name = name;
-        mediator.RegisterToy(this);
+        mediator.RegisterShape(this);
     }
 
-    public abstract void SendMessage(string message);
-    public abstract void ReceiveMessage(string sender, string message);
+    public abstract void SendCustomMessage(string message);
+    public abstract void ReceiveCustomMessage(string sender, string message);
 }
